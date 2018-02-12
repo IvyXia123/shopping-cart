@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.fly.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <style>
+        body,html,ul{padding:0;margin:0;}
+        .demo{position:relative;}
+        .demo li{width:200px;height:300px;list-style:none;margin:20px;padding:5px;border:1px solid #000;float:left;text-align:center;}
+        .demo li img{width:100%;height:70%;}
+        .clearfix:after {  content: ".";  display: block;  clear: both;  visibility: hidden; line-height: 0; height: 0; font-size:0;  }
+        .price{color:red;font-size:26px;font-weight:bold;margin-bottom:5px;}
+        .cart{margin-top:5px;background:#FAA21A;padding:5px;width:50%;border-radius:10px;margin-left:25%;color:#fff;}
+        .cartEnd{position:absolute;bottom:50px;right:30px;}
+        .fa-shopping-cart{color:red;font-size:30px;}
+        .flyerClass{display:block;width:50px;height:50px;border-radius:25px;}
+    </style>
+    <script>
+        $(function(){
+            var i=0;
+            $(".cart").click(function(){
+                i++;
+                var offset=$(".cartEnd").offset();
+                var img=$(this).parents().find("img");
+                var flyer=img.clone().addClass("flyerClass");
+                flyer.fly({
+                    start:{
+                        left:$(this).offset().left,
+                        top:$(this).offset().top
+                    },
+                    end:{
+                        left:offset.left,
+                        top:offset.top,
+                        width:0,
+                        height:0
+                    },
+                    onEnd:function(){
+                        $(".num").html(i);
+                        flyer.remove();
+                    }
+                });
+                $(this).css({"background":"#ccc","cursor":"default"}).unbind("click");
+            })
+        })
+    </script>
+</head>
+<body>
+<ul class="demo clearfix">
+    <li>
+        <img src="img/1.jpg"/>
+        <div>
+            <div class="price">$5000.00</div>
+            <div>超高清彩色电视机</div>
+            <div class="cart">加入购物车</div>
+        </div>
+    </li>
+    <li>
+        <img src="img/2.jpg"/>
+        <div>
+            <div class="price">$3599.00</div>
+            <div>高效节能电冰箱</div>
+            <div class="cart">加入购物车</div>
+        </div>
+    </li>
+    <li>
+        <img src="img/3.jpg"/>
+        <div>
+            <div class="price">$2300.00</div>
+            <div>平板电脑</div>
+            <div class="cart">加入购物车</div>
+        </div>
+    </li>
+    <li>
+        <img src="img/4.jpg"/>
+        <div>
+            <div class="price">$4999.00</div>
+            <div>微波炉</div>
+            <div class="cart">加入购物车</div>
+        </div>
+    </li>
+    <li>
+        <img src="img/5.jpg"/>
+        <div>
+            <div class="price">$2350.00</div>
+            <div>洗衣机</div>
+            <div class="cart">加入购物车</div>
+        </div>
+    </li>
+</ul>
+<div class="cartEnd fa fa-shopping-cart">(<span class="num"></span>)</div>
+</body>
+</html>

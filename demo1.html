@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/demo1.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+        var i=0;
+        $(function(){
+            $(".pro-btn").click(function(){
+                i++;
+                var $img=$(this).parent().find("img");//找到了按钮所对应的图片
+                var left=$img.offset().left;
+                var top=$img.offset().top;
+                var width=$img.width();
+                var height=$img.height();
+                $img.clone().appendTo($("body")).css({
+                    "left":left,
+                    "top":top,
+                    "width":width,
+                    "height":height,
+                    "position":"absolute",
+                    "z-index":10,
+                    "opacity":"0.8"
+                }).animate({
+                    "left":$("#car").offset().left,
+                    "top":$("#car").offset().top,
+                    "width":"20px",
+                    "height":"20px",
+                    "opacity":"0.1"
+                },1000,function(){
+                    $("#pro-num").text(i);
+                    $(this).remove();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="pros">
+        <div class="pro">
+            <div class="pro-pic"><img src="img/1.jpg"></div>
+            <div class="pro-price">¥3499.00</div>
+            <div class="pro-title">LG 49LF5400-CA 49寸IPS硬屏富贵招财铜钱设计</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+         <div class="pro">
+            <div class="pro-pic"><img src="img/2.jpg"></div>
+            <div class="pro-price">¥3799.00</div>
+            <div class="pro-title">Hisense/海信 LED50T1A 海信电视官方旗舰店</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+         <div class="pro">
+            <div class="pro-pic"><img src="img/3.jpg"></div>
+            <div class="pro-price">¥3999.00</div>
+            <div class="pro-title">Skyworth/创维 50E8EUS 8核4Kj极清酷开系统智能液晶电视</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+        <div class="pro">
+            <div class="pro-pic"><img src="img/1.jpg"></div>
+            <div class="pro-price">¥3499.00</div>
+            <div class="pro-title">LG 49LF5400-CA 49寸IPS硬屏富贵招财铜钱设计</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+         <div class="pro">
+            <div class="pro-pic"><img src="img/2.jpg"></div>
+            <div class="pro-price">¥3799.00</div>
+            <div class="pro-title">Hisense/海信 LED50T1A 海信电视官方旗舰店</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+         <div class="pro">
+            <div class="pro-pic"><img src="img/3.jpg"></div>
+            <div class="pro-price">¥3999.00</div>
+            <div class="pro-title">Skyworth/创维 50E8EUS 8核4Kj极清酷开系统智能液晶电视</div>
+            <div class="pro-btn"><a href="javascript:;">加入购物车</a></div>
+        </div>
+    </div>
+
+    <div id="car">
+        <div id="pro-num">0</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <style>
+        body{margin:0;padding:0;overflow:hidden;}
+        #canvas{background:black;}
+    </style>
+    <script>
+        $(function(){
+            var snake={
+                canvas:document.getElementById("canvas"),
+                ctx:document.getElementById("canvas").getContext("2d"),
+
+                xDis:0,  //正方形的大小
+                yDis:0,
+
+                posX:0,    //正方形的起点
+                posY:0,
+
+                repeater:0,  //requestAnimationFrame返回的ID
+
+                divisions:30,   //
+                init:function(){
+                    this.memory=new Array(this.divisions-1);
+                    for(var i=0;i<(this.divisions+1);i++){
+                        this.memory[i]=new Array(this.divisions-1);
+                        console.log(this.memory);
+                    }
+
+                    //设置canvas的大小
+                    var width=window.innerWidth;
+                    var height=window.innerHeight;
+                    snake.canvas.width=width;
+                    snake.canvas.height=height;
+
+                    snake.xDis=width/snake.divisions;
+                    snake.yDis=height/snake.divisions;
+
+                    this.ctx.fillStyle="#ea80b0";
+
+                    this.posX=Math.floor(Math.random()*this.divisions);
+                    this.posY=Math.floor(Math.random()*this.divisions);
+
+
+
+
+
+                }
+
+
+            }
+        })
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+</html>

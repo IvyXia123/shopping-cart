@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <style>
+        body{margin:0;padding:0;}
+        div{width:10px;height:10px;background:orange;float:left;}
+        button{position:absolute;top:20px;left:20px;}
+        #stop{left:100px;}
+    </style>
+    <script>
+        $(function(){
+            var globalId;
+            function repeatOften(){
+                $("<div></div>").appendTo("body");
+                globalId=requestAnimationFrame(repeatOften);
+            }
+            globalId=requestAnimationFrame(repeatOften);
+            $("#stop").click(function(){
+                cancelAnimationFrame(globalId);
+            })
+            $("#start").click(function(){
+                cancelAnimationFrame(globalId);
+                requestAnimationFrame(repeatOften);
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+</html>
